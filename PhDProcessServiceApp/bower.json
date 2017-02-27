@@ -1,0 +1,18 @@
+{
+  "name": "PhDProcessServiceApp",
+  "homepage": "https://github.com/DrazenRocket/PhDProcessService",
+  "authors": [
+    "Dražen Đanić <drazen.rocket@hotmail.com>"
+  ],
+  "description": "Web application for work with PhD processes.",
+  "main": "index.html",
+  "keywords": [
+    "PhD",
+    "Process",
+    "Service",
+    "Web",
+    "Application"
+  ],
+  "license": "MIT",
+  "private": true
+}
