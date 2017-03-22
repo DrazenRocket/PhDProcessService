@@ -1,0 +1,34 @@
+<div class="row col-xs-4 col-xs-offset-4">
+    <h1>PhD Process Service</h1>
+    <h2>Log in</h2>
+
+    <form name="userLoginForm" ng-submit="ulc.login(userLoginForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{'has-error' : userLoginForm.username.$invalid && !userLoginForm.username.$pristine}">
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" class="form-control"
+                   ng-model="ulc.username" placeholder="Your username" required />
+            <p ng-show="userLoginForm.username.$invalid && !userLoginForm.username.$pristine"
+                class="help-block">
+                Your username is required!
+            </p>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error' : userLoginForm.password.$invalid && !userLoginForm.password.$pristine}">
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" class="form-control"
+                   ng-model="ulc.password" placeholder="Your password" required />
+            <p ng-show="userLoginForm.password.$invalid && !userLoginForm.password.$pristine"
+                class="help-block">
+                Your password is required!
+            </p>
+        </div>
+
+        <div ng-show="ulc.unsuccessfulLogin===true" class="alert alert-danger">
+            Unsuccessful log in!
+        </div>
+
+        <button type="submit" class="btn btn-default btn-block" ng-disabled="userLoginForm.$invalid">
+            Log in
+        </button>
+    </form>
+</div>

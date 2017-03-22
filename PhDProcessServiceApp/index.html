@@ -16,11 +16,17 @@
         <script src="assets/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
         <script src="assets/bower_components/angular-base64/angular-base64.min.js"></script>
 
+        <script src="app/components/user/user.module.js"></script>
+        <script src="app/components/user/user.service.js"></script>
+        <script src="app/components/user/user.route.js"></script>
+        <script src="app/components/user/user-login.controller.js"></script>
         <script src="app/app.module.js"></script>
     </head>
     <body ng-app="app">
         <div class="container">
-            <h1>PhD Process Service</h1>
+            <div class="row" ui-view="headerView"></div>
+            <div class="row" ui-view="mainView"></div>
+            <div class="row" ui-view="footerView"></div>
         </div>
     </body>
 </html>
