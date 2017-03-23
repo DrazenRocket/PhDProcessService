@@ -18,6 +18,21 @@
 						controllerAs: "ulc"
 					}
 				}
+			})
+			.state("profile", {
+				url: "/profile",
+				views: {
+					headerView: {
+						templateUrl: "app/components/core/core-header.html",
+						controller: "CoreHeaderController",
+						controllerAs: "chc"
+					},
+					mainView: {
+						templateUrl: "app/components/user/user-profile.html",
+						controller: "UserProfileController",
+						controllerAs: "upc"
+					}
+				}
 			});
 	}
 } (angular));
