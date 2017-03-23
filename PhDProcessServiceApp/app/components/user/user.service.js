@@ -25,6 +25,19 @@
 		return credentials;
 	};
 
+	UserService.prototype.getUserUsernameFromLocalStorage = function () {
+		var credentials = this.getUserCredentialsFromLocalStorage();
+		var username = null;
+
+		if (credentials != undefined && credentials != null) {
+			var credentialsElements = credentials.split(":");
+
+			username = credentialsElements[0];
+		}
+
+		return username;
+	}
+
 	UserService.prototype.getUserById = function (id, credentials, successcb, errorcb) {
 		var req = {
 			method: "GET",

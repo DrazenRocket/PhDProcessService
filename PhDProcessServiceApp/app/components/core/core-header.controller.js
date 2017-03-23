@@ -3,13 +3,14 @@
 
 	angular
 		.module("app.core")
-		.controller("HeaderController", HeaderController);
+		.controller("CoreHeaderController", CoreHeaderController);
 
-	HeaderController.$inject = ["$state", "userService"];
-	function HeaderController(userService) {
-		var hc = this;
+	CoreHeaderController.$inject = ["$state", "userService"];
+	function CoreHeaderController($state, userService) {
+		var chc = this;
 
-		hc.logout = logout;
+		chc.logout = logout;
+		chc.username = userService.getUserUsernameFromLocalStorage();
 
 		function logout() {
 			userService.removeUserCredentialsFromLocalStorage();

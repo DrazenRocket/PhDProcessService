@@ -5,8 +5,8 @@
 		.module("app.user")
 		.controller("UserLoginController", UserLoginController);
 
-	UserLoginController.$inject = ["userService"];
-	function UserLoginController(userService) {
+	UserLoginController.$inject = ["$state", "userService"];
+	function UserLoginController($state, userService) {
 		var ulc = this;
 
 		ulc.login = login;
@@ -19,10 +19,9 @@
 				var credentials = ulc.username + ":" + ulc.password;
 
 				userService.getUserById(ulc.username, credentials,
-					function (data) {
+					function (response) {
 						userService.saveUserCredentialsToLocalStorage(credentials);
-						var credi = userService.getUserCredentialsFromLocalStorage();
-						userService.removeUserCredentialsFromLocalStorage();
+						$state.go("profile")
 					}, function () {
 						ulc.unsuccessfulLogin = true;
 					});
