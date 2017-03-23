@@ -2,5 +2,5 @@
 	"use strict";
 
 	angular
-		.module("app", ["app.core", "app.user", "app.task"]);
+		.module("app.task", ["ui.router"]);
 } (angular));
