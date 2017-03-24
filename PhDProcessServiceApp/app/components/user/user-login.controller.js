@@ -22,7 +22,8 @@
 					function (response) {
 						userService.saveUserCredentialsToLocalStorage(credentials);
 						$state.go("profile")
-					}, function () {
+					},
+					function () {
 						ulc.unsuccessfulLogin = true;
 					});
 			}

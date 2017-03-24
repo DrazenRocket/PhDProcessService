@@ -39,7 +39,7 @@
 	}
 
 	UserService.prototype.getUserById = function (id, credentials, successcb, errorcb) {
-		var req = {
+		var request = {
 			method: "GET",
 			url: "http://localhost:8080/activiti-rest/service/identity/users/"+id,
 			headers: {
@@ -49,6 +49,6 @@
 			}
 		};
 
-		this.$http(req).then(successcb, errorcb);
+		this.$http(request).then(successcb, errorcb);
 	};
 } (angular));
