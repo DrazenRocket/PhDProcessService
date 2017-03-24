@@ -10,6 +10,20 @@
 		this.$base64 = $base64;
 	}
 
+	TaskService.prototype.getTaskById = function (taskId, credentials, successcb, errorcb) {
+		var request = {
+			method: "GET",
+			url: "http://localhost:8080/activiti-rest/service/runtime/tasks/"+taskId,
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"Authorization": "Basic " + this.$base64.encode(credentials)
+			}
+		};
+
+		this.$http(request).then(successcb, errorcb);
+	};
+
 	TaskService.prototype.getTaskListByAssignee = function (assignee, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",

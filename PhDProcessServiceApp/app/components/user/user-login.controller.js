@@ -21,7 +21,7 @@
 				userService.getUserById(ulc.username, credentials,
 					function (response) {
 						userService.saveUserCredentialsToLocalStorage(credentials);
-						$state.go("profile")
+						$state.go("profile", {id: ulc.username});
 					},
 					function () {
 						ulc.unsuccessfulLogin = true;

@@ -5,13 +5,12 @@
 		.module("app.user")
 		.controller("UserProfileController", UserProfileController);
 
-	UserProfileController.$inject = ["userService"];
-	function UserProfileController(userService) {
+	UserProfileController.$inject = ["$stateParams", "userService"];
+	function UserProfileController($stateParams, userService) {
 		var upc = this;
-
 		var credentials = userService.getUserCredentialsFromLocalStorage();
 
-		upc.username = userService.getUserUsernameFromLocalStorage();
+		upc.username = $stateParams.id;
 		upc.user = {};
 
 		userService.getUserById(upc.username, credentials,

@@ -14,9 +14,9 @@
             <tr ng-repeat="task in tlic.taskList">
                 <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
-                <td>{{task.assignee}}</td>
+                <td><a ui-sref="profile({id: task.assignee})">{{task.assignee}}</a></td>
                 <td>
-                    <button type="button" class="btn btn-primary">View details</button>
+                    <button type="button" class="btn btn-primary" ui-sref="task({id: task.id})">View details</button>
                 </td>
             </tr>
         </tbody>

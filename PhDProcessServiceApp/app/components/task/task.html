@@ -1,3 +1,54 @@
 <div class="row col-sm-6 col-sm-offset-3">
-    <h1>Task</h1>
+    <h1>Task '{{tc.task.name}}'</h1>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Name:
+            </div>
+            <div class="panel-body">
+                {{tc.task.name}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Description:
+            </div>
+            <div class="panel-body">
+                {{tc.task.description}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Created date:
+            </div>
+            <div class="panel-body">
+                {{tc.task.createTime}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Due date:
+            </div>
+            <div class="panel-body">
+                {{tc.task.dueDate}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Owner:
+            </div>
+            <div class="panel-body">
+                <a ui-sref="profile({id: tc.task.owner})">{{tc.task.owner}}</a>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Assigned to:
+            </div>
+            <div class="panel-body">
+                <a ui-sref="profile({id: tc.task.assignee})">{{tc.task.assignee}}</a>
+            </div>
+        </div>
+    </div>
 </div>

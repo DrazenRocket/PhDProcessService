@@ -20,7 +20,7 @@
 				}
 			})
 			.state("profile", {
-				url: "/profile",
+				url: "/profile/:id",
 				views: {
 					headerView: {
 						templateUrl: "app/components/core/core-header.html",
