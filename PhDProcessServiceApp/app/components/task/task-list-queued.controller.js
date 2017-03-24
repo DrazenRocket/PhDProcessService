@@ -13,13 +13,28 @@
 		tlqc.username = userService.getUserUsernameFromLocalStorage();
 		tlqc.candidateUser = tlqc.username;
 		tlqc.taskList = [];
+		tlqc.claimTask = claimTask;
 
-		taskService.getTaskListByCandidateUser(tlqc.candidateUser, credentials,
-			function (response) {
-				tlqc.taskList = response.data.data;
-			},
-			function () {
+		loadTaskList();
 
-			});
+		function loadTaskList() {
+			taskService.getTaskListByCandidateUser(tlqc.candidateUser, credentials,
+				function (response) {
+					tlqc.taskList = response.data.data;
+				},
+				function () {
+
+				});
+		}
+
+		function claimTask(taskId) {
+			taskService.claimTask(taskId, tlqc.username, credentials,
+				function (response) {
+					loadTaskList();
+				},
+				function () {
+
+				});
+		}
 	}
 } (angular));

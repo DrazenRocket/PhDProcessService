@@ -65,4 +65,22 @@
 
 		this.$http(request).then(successcb, errorcb);
 	};
+
+	TaskService.prototype.claimTask = function (taskId, assignee, credentials, successcb, errorcb) {
+		var request = {
+			method: "POST",
+			url: "http://localhost:8080/activiti-rest/service/runtime/tasks/" + taskId,
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"Authorization": "Basic " + this.$base64.encode(credentials)
+			},
+			data: {
+				action: "claim",
+				assignee: assignee
+			}
+		};
+
+		this.$http(request).then(successcb, errorcb);
+	};
 } (angular));

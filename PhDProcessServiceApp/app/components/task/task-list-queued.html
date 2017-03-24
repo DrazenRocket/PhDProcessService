@@ -1,22 +1,26 @@
 <div class="row col-sm-6 col-sm-offset-3">
-    <h1>List of queued task for user '{{tlqc.candidateUser}}'</h1>
+    <h1>
+        List of queued task for user '{{tlqc.candidateUser}}' <span class="badge">{{tlqc.taskList.length}}</span>
+    </h1>
 
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <td>Name</td>
-                <td>Description</td>
-                <td>Action</td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="task in tlqc.taskList">
+                <td>{{task.id}}</td>
                 <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
                 <td>
                     <div class="btn-group-vertical">
                         <button type="button" class="btn btn-primary" ui-sref="task({id: task.id})">View details</button>
-                        <button type="button" class="btn btn-primary">Claim</button>
+                        <button type="button" class="btn btn-primary" ng-click="tlqc.claimTask(task.id)">Claim</button>
                     </div
                 </td>
             </tr>

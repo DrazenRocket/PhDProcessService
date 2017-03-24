@@ -4,6 +4,14 @@
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">
+                Id
+            </div>
+            <div class="panel-body">
+                {{tc.task.id}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 Name:
             </div>
             <div class="panel-body">
@@ -23,7 +31,7 @@
                 Created date:
             </div>
             <div class="panel-body">
-                {{tc.task.createTime}}
+                {{tc.task.createTime | date : "dd-MM-yyyy HH:mm:ss"}}
             </div>
         </div>
         <div class="panel panel-default">
@@ -31,7 +39,7 @@
                 Due date:
             </div>
             <div class="panel-body">
-                {{tc.task.dueDate}}
+                {{tc.task.dueDate | date : "dd-MM-yyyy HH:mm:ss"}}
             </div>
         </div>
         <div class="panel panel-default">
@@ -47,7 +55,13 @@
                 Assigned to:
             </div>
             <div class="panel-body">
-                <a ui-sref="profile({id: tc.task.assignee})">{{tc.task.assignee}}</a>
+                <a ng-if="tc.task.assignee != undefined && tc.task.assignee != null" ui-sref="profile({id: tc.task.assignee})">
+                    {{tc.task.assignee}}
+                </a>
+                <button ng-if="tc.task.assignee == undefined || tc.task.assignee == null" type="button" class="btn btn-primary"
+                    ng-click="tc.claimTask()">
+                    Claim
+                </button>
             </div>
         </div>
     </div>

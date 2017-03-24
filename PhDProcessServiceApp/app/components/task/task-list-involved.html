@@ -1,9 +1,12 @@
 <div class="row col-sm-6 col-sm-offset-3">
-    <h1>List of task in which '{{tlic.involvedUser}}' is involved </h1>
+    <h1>
+        List of task in which '{{tlic.involvedUser}}' is involved <span class="badge">{{tlic.taskList.length}}</span>
+    </h1>
 
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Assigned to</th>
@@ -12,6 +15,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="task in tlic.taskList">
+                <td>{{task.id}}</td>
                 <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
                 <td><a ui-sref="profile({id: task.assignee})">{{task.assignee}}</a></td>
