@@ -16,7 +16,7 @@
 
 		taskService.getTaskListByAssignee(tlc.assignee, credentials,
 			function (response) {
-				tlc.taskList = response.data;
+				tlc.taskList = response.data.data;
 			},
 			function () {
 

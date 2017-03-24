@@ -13,7 +13,7 @@
 	TaskService.prototype.getTaskListByAssignee = function (assignee, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
-			url: "http://localhost:8080/activiti-rest/service/runtime/tasks?assignee=" + assignee,
+			url: "http://localhost:8080/activiti-rest/service/runtime/tasks?size=1000&assignee=" + assignee,
 			headers: {
 				"Content-Type": "application/json",
 				"Accept": "application/json",
@@ -27,7 +27,7 @@
 	TaskService.prototype.getTaskListByCandidateUser = function (candidateUser, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
-			url: "http://localhost:8080/activiti-rest/service/runtime/tasks?candidateUser=" + candidateUser,
+			url: "http://localhost:8080/activiti-rest/service/runtime/tasks?size=1000&candidateUser=" + candidateUser,
 			headers: {
 				"Content-Type": "application/json",
 				"Accept": "application/json",
@@ -41,7 +41,7 @@
 	TaskService.prototype.getTaskListByInvolvedUser = function (involvedUser, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
-			url: "http://localhost:8080/activiti-rest/service/runtime/tasks?involvedUser=" + involvedUser,
+			url: "http://localhost:8080/activiti-rest/service/runtime/tasks?size=1000&involvedUser=" + involvedUser,
 			headers: {
 				"Content-Type": "application/json",
 				"Accept": "application/json",

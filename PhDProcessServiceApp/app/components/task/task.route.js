@@ -38,6 +38,21 @@
 						controllerAs: "tlc"
 					}
 				}
+			})
+			.state("task-list-involved", {
+				url: "/task-list-involved",
+				views: {
+					headerView: {
+						templateUrl: "app/components/core/core-header.html",
+						controller: "CoreHeaderController",
+						controllerAs: "chc"
+					},
+					mainView: {
+						templateUrl: "app/components/task/task-list-involved.html",
+						controller: "TaskListInvolvedController",
+						controllerAs: "tlic"
+					}
+				}
 			});
 	}
 } (angular));
