@@ -23,6 +23,21 @@
 						controllerAs: "tc"
 					}
 				}
+			})
+			.state("task-list", {
+				url: "/task-list",
+				views: {
+					headerView: {
+						templateUrl: "app/components/core/core-header.html",
+						controller: "CoreHeaderController",
+						controllerAs: "chc"
+					},
+					mainView: {
+						templateUrl: "app/components/task/task-list.html",
+						controller: "TaskListController",
+						controllerAs: "tlc"
+					}
+				}
 			});
 	}
 } (angular));
