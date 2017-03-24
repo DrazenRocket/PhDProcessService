@@ -1,0 +1,25 @@
+<div class="row col-sm-6 col-sm-offset-3">
+    <h1>List of queued task for user '{{tlqc.candidateUser}}'</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="task in tlqc.taskList">
+                <td>{{task.name}}</td>
+                <td>{{task.description}}</td>
+                <td>
+                    <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-primary">View details</button>
+                        <button type="button" class="btn btn-primary">Claim</button>
+                    </div
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

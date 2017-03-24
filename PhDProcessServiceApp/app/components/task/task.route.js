@@ -53,6 +53,21 @@
 						controllerAs: "tlic"
 					}
 				}
+			})
+			.state("task-list-queued", {
+				url: "/task-list-queued",
+				views: {
+					headerView: {
+						templateUrl: "app/components/core/core-header.html",
+						controller: "CoreHeaderController",
+						controllerAs: "chc"
+					},
+					mainView: {
+						templateUrl: "app/components/task/task-list-queued.html",
+						controller: "TaskListQueuedController",
+						controllerAs: "tlqc"
+					}
+				}
 			});
 	}
 } (angular));
