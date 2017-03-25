@@ -13,9 +13,12 @@
 		tc.username = userService.getUserUsernameFromLocalStorage();
 		tc.taskId = $stateParams.id;
 		tc.task = {};
+		tc.taskFormProperties = [];
 		tc.claimTask = claimTask;
+		tc.completeTask = postTaskFormData;
 
 		loadTask();
+		loadTaskFormData();
 
 		function loadTask() {
 			taskService.getTaskById(tc.taskId, credentials,
@@ -32,6 +35,36 @@
 				function (response) {
 					loadTask();
 				}, function () {
+
+				});
+		}
+
+		function loadTaskFormData() {
+			taskService.getTaskFormDataByTaskId(tc.taskId, credentials,
+				function (response) {
+					tc.taskFormProperties = response.data.formProperties;
+				}, function () {
+
+				});
+		}
+
+		function postTaskFormData() {
+			var properties = [];
+
+			if (tc.taskFormProperties) {
+				for (var i = 0; i < tc.taskFormProperties.length; i++) {
+					var property = {
+						id: tc.taskFormProperties[i].id,
+						value: taskFormProperties[i].value
+					};
+				}
+			}
+
+			taskService.postTaskFormData(tc.taskId, properties, credentials,
+				function (response) {
+					$state.go("task-list");
+				},
+				function () {
 
 				});
 		}

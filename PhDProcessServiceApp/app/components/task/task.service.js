@@ -83,4 +83,36 @@
 
 		this.$http(request).then(successcb, errorcb);
 	};
+
+	TaskService.prototype.getTaskFormDataByTaskId = function (taskId, credentials, successcb, errorcb) {
+		var request = {
+			method: "GET",
+			url: "http://localhost:8080/activiti-rest/service/form/form-data?taskId=" + taskId,
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"Authorization": "Basic " + this.$base64.encode(credentials)
+			}
+		};
+
+		this.$http(request).then(successcb, errorcb);
+	};
+
+	TaskService.prototype.postTaskFormData = function (taskId, properties, credentials, successcb, errorcb) {
+		var request = {
+			method: "POST",
+			url: "http://localhost:8080/activiti-rest/service/form/form-data",
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"Authorization": "Basic " + this.$base64.encode(credentials)
+			},
+			data: {
+				taskId: taskId,
+				properties: properties
+			}
+		};
+
+		this.$http(request).then(successcv, errorcb);
+	};
 } (angular));
