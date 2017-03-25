@@ -69,7 +69,19 @@
                 Form:
             </div>
             <div class="panel-body">
+                <form name="taskForm" ng-submit="tc.submitTaskForm(taskForm.$valid)" novalidate>
+                    <div class="form-group" ng-repeat="property in tc.taskFormProperties">
+                        <label>{{property.name}}</label>
+                    </div>
 
+                    <div ng-if="tc.unsuccessfulPostFormData" class="alert alert-danger">
+                        Unsuccessful posted form data!
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" ng-disabled="taskForm.$invalid">
+                        Complete task
+                    </button>
+                </form>
             </div>
         </div>
     </div>

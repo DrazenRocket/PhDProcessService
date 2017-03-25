@@ -113,6 +113,6 @@
 			}
 		};
 
-		this.$http(request).then(successcv, errorcb);
+		this.$http(request).then(successcb, errorcb);
 	};
 } (angular));

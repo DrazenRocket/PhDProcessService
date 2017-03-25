@@ -14,8 +14,9 @@
 		tc.taskId = $stateParams.id;
 		tc.task = {};
 		tc.taskFormProperties = [];
+		tc.unsuccessfulPostFormData = false;
 		tc.claimTask = claimTask;
-		tc.completeTask = postTaskFormData;
+		tc.submitTaskForm = submitTaskForm;
 
 		loadTask();
 		loadTaskFormData();
@@ -55,7 +56,7 @@
 				for (var i = 0; i < tc.taskFormProperties.length; i++) {
 					var property = {
 						id: tc.taskFormProperties[i].id,
-						value: taskFormProperties[i].value
+						value: tc.taskFormProperties[i].value
 					};
 				}
 			}
@@ -65,8 +66,14 @@
 					$state.go("task-list");
 				},
 				function () {
-
+					tc.unsuccessfulPostFormData = true;
 				});
+		}
+
+		function submitTaskForm(isValid) {
+			if (isValid) {
+				postTaskFormData();
+			}
 		}
 	}
 } (angular));
