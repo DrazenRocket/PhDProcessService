@@ -74,7 +74,10 @@
                         ng-class="{'has-error' : taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine}">
                         <div ng-if="taskFormProperty.readable">
                             <div ng-if="taskFormProperty.type == 'string'">
-                                <label>{{taskFormProperty.name}}</label>
+                                <label>
+                                    <span class="glyphicon glyphicon-asterisk" ng-if="taskFormProperty.required">
+                                    </span>{{taskFormProperty.name}}:
+                                </label>
 
                                 <input type="text" class="form-control" name="{{taskFormProperty.id}}"
                                     ng-model="taskFormProperty.value" ng-required="taskFormProperty.required"
@@ -85,11 +88,26 @@
 
                                 <p class="help-block"
                                    ng-if="taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine">
-                                    Invalid content!
+                                    Invalid content of the textual field!
                                 </p>
                             </div>
                             <div ng-if="taskFormProperty.type == 'long'">
+                                <label>
+                                    <span class="glyphicon glyphicon-asterisk" ng-if="taskFormProperty.required">
+                                    </span>{{taskFormProperty.name}}:
+                                </label>
 
+                                <input type="number" class="form-control" name="{{taskFormProperty.id}}"
+                                    ng-model="taskFormProperty.value" ng-required="taskFormProperty.required"
+                                    ng-if="taskFormProperty.writable" />
+                                <input type="number" class="form-control" name="{{taskFormProperty.id}}"
+                                    value="{{taskFormProperty.value}}" ng-required="taskFormProperty.required"
+                                    disabled ng-if="!taskFormProperty.writable" />
+
+                                <p class="help-block"
+                                    ng-if="taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine">
+                                    Invalid content of the numerical field!
+                                </p>
                             </div>
                             <div ng-if="taskFormProperty.type == 'boolean'">
 
@@ -98,7 +116,37 @@
 
                             </div>
                             <div ng-if="taskFormProperty.type == 'enum'">
+                                <label>
+                                    <span class="glyphicon glyphicon-asterisk" ng-if="taskFormProperty.required">
+                                    </span>{{taskFormProperty.name}}
+                                </label>
 
+                                <select class="form-control" name="{{taskFormProperty.id}}"
+                                    ng-model="taskFormProperty.value"
+                                    ng-required="taskFormProperty.required"
+                                    ng-if="taskFormProperty.writable">
+                                    <option value="{{enumValue.id}}"
+                                            ng-selected="enumValue.id == taskFormProperty.value"
+                                            ng-repeat="enumValue in taskFormProperty.enumValues">
+                                        {{enumValue.name}}
+                                    </option>
+                                </select>
+
+                                <select class="form-control" name="{{taskFormProperty.id}}"
+                                    ng-required="taskFormProperty.required"
+                                    disabled
+                                    ng-if="!taskFormProperty.writable">
+                                    <option value="{{enumValue.id}}"
+                                            ng-selected="enumValue.id == taskFormProperty.value"
+                                            ng-repeat="enumValue in taskFormProperty.enumValues">
+                                        {{enumValue.name}}
+                                    </option>
+                                </select>
+
+                                <p class="help-block"
+                                    ng-if="taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine">
+                                    Invalid selection!
+                                </p>
                             </div>
                         </div>
                     </div>

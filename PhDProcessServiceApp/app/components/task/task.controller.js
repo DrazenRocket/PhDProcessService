@@ -17,6 +17,7 @@
 		tc.unsuccessfulPostFormData = false;
 		tc.claimTask = claimTask;
 		tc.submitTaskForm = submitTaskForm;
+		tc.findTaskFormPropertyById = findTaskFormPropertyById;
 
 		loadTask();
 		loadTaskFormData();
@@ -44,6 +45,14 @@
 			taskService.getTaskFormDataByTaskId(tc.taskId, credentials,
 				function (response) {
 					tc.taskFormProperties = response.data.formProperties;
+
+					for (var i = 0; i < tc.taskFormProperties.length; i++) {
+						if (tc.taskFormProperties[i].type == "long") {
+							var parsedValue = parseInt(tc.taskFormProperties[i].value);
+
+							tc.taskFormProperties[i].value = parsedValue;
+						}
+					}
 				}, function () {
 
 				});
@@ -78,6 +87,20 @@
 			if (isValid) {
 				postTaskFormData();
 			}
+		}
+
+		function findTaskFormPropertyById(taskFormPropertyId) {
+			var taskFormProperty = null;
+
+			for (var i = 0; i < tc.taskFormProperties.length; i++) {
+				if (tc.taskFormProperties[i] == taskFormPropertyId) {
+					taskFormProperty = tc.taskFormProperties[i];
+
+					break;
+				}
+			}
+
+			return taskFormProperty;
 		}
 	}
 } (angular));
