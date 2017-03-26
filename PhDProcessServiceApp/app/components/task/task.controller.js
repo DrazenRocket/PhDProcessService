@@ -58,6 +58,10 @@
 						id: tc.taskFormProperties[i].id,
 						value: tc.taskFormProperties[i].value
 					};
+
+					if (tc.taskFormProperties[i].writable) {
+						properties.push(property);
+					}
 				}
 			}
 

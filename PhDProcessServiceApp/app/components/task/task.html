@@ -70,11 +70,40 @@
             </div>
             <div class="panel-body">
                 <form name="taskForm" ng-submit="tc.submitTaskForm(taskForm.$valid)" novalidate>
-                    <div class="form-group" ng-repeat="property in tc.taskFormProperties">
-                        <label>{{property.name}}</label>
+                    <div class="form-group" ng-repeat="taskFormProperty in tc.taskFormProperties"
+                        ng-class="{'has-error' : taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine}">
+                        <div ng-if="taskFormProperty.readable">
+                            <div ng-if="taskFormProperty.type == 'string'">
+                                <label>{{taskFormProperty.name}}</label>
+
+                                <input type="text" class="form-control" name="{{taskFormProperty.id}}"
+                                    ng-model="taskFormProperty.value" ng-required="taskFormProperty.required"
+                                    ng-if="taskFormProperty.writable" />
+                                <input type="text" class="form-control" name="{{taskFormProperty.id}}"
+                                    value="{{taskFormProperty.value}}" ng-required="taskFormProperty.required"
+                                    disabled ng-if="!taskFormProperty.writable"/>
+
+                                <p class="help-block"
+                                   ng-if="taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine">
+                                    Invalid content!
+                                </p>
+                            </div>
+                            <div ng-if="taskFormProperty.type == 'long'">
+
+                            </div>
+                            <div ng-if="taskFormProperty.type == 'boolean'">
+
+                            </div>
+                            <div ng-if="taskFormProperty.type == 'date'">
+
+                            </div>
+                            <div ng-if="taskFormProperty.type == 'enum'">
+
+                            </div>
+                        </div>
                     </div>
 
-                    <div ng-if="tc.unsuccessfulPostFormData" class="alert alert-danger">
+                    <div class="alert alert-danger" ng-if="tc.unsuccessfulPostFormData">
                         Unsuccessful posted form data!
                     </div>
 
