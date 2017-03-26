@@ -110,7 +110,26 @@
                                 </p>
                             </div>
                             <div ng-if="taskFormProperty.type == 'boolean'">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="{{taskFormProperty.id}}"
+                                            ng-model="taskFormProperty.value"
+                                            ng-required="taskFormProperty.required"
+                                            ng-if="taskFormProperty.writable" />
+                                        <input type="checkbox" name="{{taskFormProperty.id}}"
+                                            ng-checked="taskFormProperty.value"
+                                            ng-required="taskFormProperty.required"
+                                            disabled
+                                            ng-if="!taskFormProperty.writable" />
 
+                                        <span class="glyphicon glyphicon-asterisk"></span>{{taskFormProperty.name}}
+                                    </label>
+
+                                    <p class="help-block"
+                                        ng-if="taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine">
+                                        Invalid selection!
+                                    </p>
+                                </div>
                             </div>
                             <div ng-if="taskFormProperty.type == 'date'">
 
