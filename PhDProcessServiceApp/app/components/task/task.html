@@ -134,7 +134,22 @@
                                 </div>
                             </div>
                             <div ng-if="taskFormProperty.type == 'date'">
+                                <label>
+                                    <span class="glyphicon glyphicon-asterisk" ng-if="taskFormProperty.required">
+                                    </span>{{taskFormProperty.name}} (Date pattern: {{taskFormProperty.datePattern}}):
+                                </label>
 
+                                <input type="text" class="form-control" name="{{taskFormProperty.id}}"
+                                    ng-model="taskFormProperty.value" ng-required="taskFormProperty.required"
+                                    ng-if="taskFormProperty.writable" />
+                                <input type="text" class="form-control" name="{{taskFormProperty.id}}"
+                                    value="{{taskFormProperty.value}}" ng-required="taskFormProperty.required"
+                                    disabled ng-if="!taskFormProperty.writable"/>
+
+                                <p class="help-block"
+                                    ng-if="taskForm[taskFormProperty.id].$invalid && !taskForm[taskFormProperty.id].$pristine">
+                                    Invalid content of the date field!
+                                </p>
                             </div>
                             <div ng-if="taskFormProperty.type == 'enum'">
                                 <label>

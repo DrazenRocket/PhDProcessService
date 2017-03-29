@@ -139,7 +139,26 @@
                                 </div>
                             </div>
                             <div ng-if="processDefinitionFormProperty.type == 'date'">
+                                <label>
+                                    <span class="glyphicon glyphicon-asterisk"
+                                        ng-if="processDefinitionFormProperty.required">
+                                    </span>{{processDefinitionFormProperty.name}} (Date pattern: {{processDefinitionFormProperty.datePattern}}):
+                                </label>
 
+                                <input type="text" class="form-control" name="{{processDefinitionFormProperty.id}}"
+                                    ng-model="processDefinitionFormProperty.value"
+                                    ng-required="processDefinitionFormProperty.required"
+                                    ng-if="processDefinitionFormProperty.writable" />
+                                <input type="text" class="form-control" name="{{processDefinitionFormProperty.id}}"
+                                    value="{{processDefinitionFormProperty.value}}"
+                                    ng-required="processDefinitionFormProperty.required"
+                                    disabled
+                                    ng-if="!processDefinitionFormProperty.writable" />
+
+                                <p class="help-block"
+                                    ng-if="processDefinitionForm[processDefinitionFormProperty.id].$invalid && !processDefinitionForm[processDefinitionFormProperty.id].$pristine">
+                                    Invalid content of the date field!
+                                </p>
                             </div>
                             <div ng-if="processDefinitionFormProperty.type == 'enum'">
                                 <label>
