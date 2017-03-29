@@ -1,0 +1,71 @@
+<div class="row col-sm-6 col-sm-offset-3">
+    <h1>Process definition '{{pc.processDefinitionId}}'</h1>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Id:
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.id}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Version:
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.version}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Key:
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.key}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Category:
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.category}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Suspended?
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.suspended}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Name:
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.name}}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Description:
+            </div>
+            <div class="panel-body">
+                {{pc.processDefinition.description}}
+            </div>
+        </div>
+        <div class="panel panel-default" ng-if="!pc.processDefinition.suspended">
+            <div class="panel-heading">
+                Form:
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+    </div>
+
+</div>

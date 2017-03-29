@@ -18,7 +18,9 @@
                 <td>{{processDefinition.description}}</td>
                 <td>{{processDefinition.version}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">View details</button>
+                    <button type="button" class="btn btn-primary" ui-sref="process({id: processDefinition.id})">
+                        View details
+                    </button>
                 </td>
             </tr>
         </tbody>

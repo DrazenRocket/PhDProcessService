@@ -8,6 +8,21 @@
 	configRoute.$inject = ["$locationProvider", "$stateProvider"];
 	function configRoute($locationProvider, $stateProvider) {
 		$stateProvider
+			.state("process", {
+				url: "/process/:id",
+				views: {
+					headerView: {
+						templateUrl: "app/components/core/core-header.html",
+						controller: "CoreHeaderController",
+						controllerAs: "chc"
+					},
+					mainView: {
+						templateUrl: "app/components/process/process.html",
+						controller: "ProcessController",
+						controllerAs: "pc"
+					}
+				}
+			})
 			.state("process-list", {
 				url: "/process-list",
 				views: {
