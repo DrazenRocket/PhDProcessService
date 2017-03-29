@@ -50,7 +50,9 @@
 						if (tc.taskFormProperties[i].type == "long") {
 							var parsedValue = parseInt(tc.taskFormProperties[i].value);
 
-							tc.taskFormProperties[i].value = parsedValue;
+							if (!isNaN(parsedValue)) {
+								tc.taskFormProperties[i].value = parsedValue;
+							}
 						}
 					}
 				}, function () {

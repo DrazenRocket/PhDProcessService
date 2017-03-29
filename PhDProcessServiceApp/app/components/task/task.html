@@ -122,7 +122,9 @@
                                             disabled
                                             ng-if="!taskFormProperty.writable" />
 
-                                        <span class="glyphicon glyphicon-asterisk"></span>{{taskFormProperty.name}}
+                                        <span class="glyphicon glyphicon-asterisk"
+                                            ng-if="taskFormProperty.required">
+                                        </span>{{taskFormProperty.name}}
                                     </label>
 
                                     <p class="help-block"
@@ -137,7 +139,7 @@
                             <div ng-if="taskFormProperty.type == 'enum'">
                                 <label>
                                     <span class="glyphicon glyphicon-asterisk" ng-if="taskFormProperty.required">
-                                    </span>{{taskFormProperty.name}}
+                                    </span>{{taskFormProperty.name}}:
                                 </label>
 
                                 <select class="form-control" name="{{taskFormProperty.id}}"
@@ -145,9 +147,12 @@
                                     ng-required="taskFormProperty.required"
                                     ng-if="taskFormProperty.writable">
                                     <option value="{{enumValue.id}}"
-                                            ng-selected="enumValue.id == taskFormProperty.value"
-                                            ng-repeat="enumValue in taskFormProperty.enumValues">
+                                        ng-selected="enumValue.id == taskFormProperty.value"
+                                        ng-repeat="enumValue in taskFormProperty.enumValues">
                                         {{enumValue.name}}
+                                    </option>
+                                    <option value=""
+                                        ng-if="!taskFormProperty.required">
                                     </option>
                                 </select>
 
@@ -156,8 +161,8 @@
                                     disabled
                                     ng-if="!taskFormProperty.writable">
                                     <option value="{{enumValue.id}}"
-                                            ng-selected="enumValue.id == taskFormProperty.value"
-                                            ng-repeat="enumValue in taskFormProperty.enumValues">
+                                        ng-selected="enumValue.id == taskFormProperty.value"
+                                        ng-repeat="enumValue in taskFormProperty.enumValues">
                                         {{enumValue.name}}
                                     </option>
                                 </select>

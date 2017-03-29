@@ -39,7 +39,9 @@
 						if (pc.processDefinitionFormProperties[i].type == 'long') {
 							var parsedValue = parseInt(pc.processDefinitionFormProperties[i].value);
 
-							pc.processDefinitionFormProperties[i].value = parsedValue;
+							if (!isNaN(parsedValue)) {
+								pc.processDefinitionFormProperties[i].value = parsedValue;
+							}
 						}
 					}
 				},
@@ -51,16 +53,14 @@
 		function postProcessDefinitionFormData() {
 			var properties = [];
 
-			if (pc.processDefinition.formProperties) {
-				for (var i = 0; i < pc.processDefinitionFormProperties.length; i++) {
-					var property = {
-						id: pc.processDefinitionFormProperties[i].id,
-						value: pc.processDefinitionFormProperties[i].value
-					};
+			for (var i = 0; i < pc.processDefinitionFormProperties.length; i++) {
+				var property = {
+					id: pc.processDefinitionFormProperties[i].id,
+					value: pc.processDefinitionFormProperties[i].value
+				};
 
-					if (pc.processDefinitionFormProperties[i].writable) {
-						properties.push(property);
-					}
+				if (pc.processDefinitionFormProperties[i].writable) {
+					properties.push(property);
 				}
 			}
 
