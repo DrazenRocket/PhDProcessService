@@ -1,0 +1,26 @@
+<div class="row">
+    <h1>Process definitions for starting <span class="badge">{{plc.processDefinitions.length}}</span></h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Version</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="processDefinition in plc.processDefinitions">
+                <td>{{processDefinition.id}}</td>
+                <td>{{processDefinition.name}}</td>
+                <td>{{processDefinition.description}}</td>
+                <td>{{processDefinition.version}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary">View details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

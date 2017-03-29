@@ -10,7 +10,7 @@
 		this.$base64 = $base64;
 	}
 
-	ProcessService.property.getProcessDefinitionById = function (id, credentials, successcb, errorcb) {
+	ProcessService.prototype.getProcessDefinitionById = function (id, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
 			url: "http://localhost:8080/activiti-rest/service/repository/process-definitions/" + id,
@@ -38,7 +38,7 @@
 		this.$http(request).then(successcb, errorcb);
 	};
 
-	ProcessService.property.getProcessDefinitionListByName = function (name, credentials, successcb, errorcb) {
+	ProcessService.prototype.getProcessDefinitionListByName = function (name, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
 			url: "http://localhost:8080/activiti-rest/service/repository/process-definitions?size=1000&name=" + name,
@@ -52,7 +52,7 @@
 		this.$http(request).then(successcb, errorcb);
 	};
 
-	ProcessService.property.getProcessDefinitionListByCategory = function (category, credentials, successcb, errorcb) {
+	ProcessService.prototype.getProcessDefinitionListByCategory = function (category, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
 			url: "http://localhost:8080/activiti-rest/service/repository/process-definitions?size=1000&category=" + category,
@@ -66,7 +66,7 @@
 		this.$http(request).then(successcb, errorcb);
 	};
 
-	ProcessService.property.getProcessDefinitionListByStartableByUser = function(startableByUser, credentials, successcb, errorcb) {
+	ProcessService.prototype.getProcessDefinitionListByStartableByUser = function(startableByUser, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
 			url: "http://localhost:8080/activiti-rest/service/repository/process-definitions?size=1000&startableByUser=" + startableByUser,
