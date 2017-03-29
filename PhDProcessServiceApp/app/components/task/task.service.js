@@ -84,7 +84,7 @@
 		this.$http(request).then(successcb, errorcb);
 	};
 
-	TaskService.prototype.getTaskFormDataByTaskId = function (taskId, credentials, successcb, errorcb) {
+	TaskService.prototype.getTaskFormData = function (taskId, credentials, successcb, errorcb) {
 		var request = {
 			method: "GET",
 			url: "http://localhost:8080/activiti-rest/service/form/form-data?taskId=" + taskId,

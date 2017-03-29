@@ -79,4 +79,37 @@
 
 		this.$http(request).then(successcb, errorcb);
 	};
+
+	ProcessService.prototype.getProcessDefinitionFormData = function (processDefinitionId, credentials, successcb, errorcb) {
+		var request = {
+			method: "GET",
+			url: "http://localhost:8080/activiti-rest/service/form/form-data?processDefinitionId=" + processDefinitionId,
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"Authorization": "Basic " + this.$base64.encode(credentials)
+			}
+		};
+
+		this.$http(request).then(successcb, errorcb);
+	};
+
+	ProcessService.prototype.postProcessDefinitionFormData = function (processDefinitionId, businessKey, properties, credentials, successcb, errorcb) {
+		var request = {
+			method: "POST",
+			url: "http://localhost:8080/activiti-rest/service/form/form-data",
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"Authorization": "Basic " + this.$base64.encode(credentials)
+			},
+			data: {
+				processDefinitionId: processDefinitionId,
+				businessKey: businessKey,
+				properties: properties
+			}
+		};
+
+		this.$http(request).then(successcb, errorcb);
+	};
 } (angular));

@@ -42,7 +42,7 @@
 		}
 
 		function loadTaskFormData() {
-			taskService.getTaskFormDataByTaskId(tc.taskId, credentials,
+			taskService.getTaskFormData(tc.taskId, credentials,
 				function (response) {
 					tc.taskFormProperties = response.data.formProperties;
 
